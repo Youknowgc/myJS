@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventHandling</title>
+</head>
+<body style="background-color: black; color: aliceblue;">
+    <div class="events" style="margin: 10%; padding: 10%;">
+        <button onclick={onclicked()}>onclick</button><br>
+
+        <input placeholder="onkeypress" onkeyup='keypress(this)'>
+
+        <input placeholder="press n release" id="release" onkeyup="release(this)">
+
+        <input placeholder="keydown" id="keydown">
+
+        <input  placeholder="enter any color" id='onchange'> 
+        <button onclick= {} >change color</button>
+    </div>
+</body>
+
+<script>
+    let onclicked= ()=>(
+        alert('onclicked')
+    );
+
+    function keypress(e){
+        console.log(e.value);
+        e.style.backgroundColor= 'yellow'
+    }
+
+    function release(e){ //onkeypress
+        console.log(e.value);
+        document.getElementById('release').value= 'key released'
+        e.style.backgroundColor= 'lime'
+        setTimeout(() => {
+            document.getElementById('release').value= null
+            e.style.backgroundColor= 'white'
+        }, 2000);
+    }
+
+    // use 'keydown' instead of 'keypress'. coz sometime keypress dosent provide some keyvalues.
+    
+    document.getElementById('keydown').addEventListener //keydown
+    ('keydown',(e)=>{
+        console.log(e);
+        document.getElementById('keydown').value= `${e.keyCode},${e.key},${e.code},`
+    })
+
+    document.getElementById('onchange').addEventListener('change',()=>{
+        document.getElementById('onchange').style.backgroundColor= 
+        document.getElementById('onchange').value
+    })
+</script>
+</html>

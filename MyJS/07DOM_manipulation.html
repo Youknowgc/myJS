@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body style="background-color: black; color: antiquewhite;">
+    <ul class="ProgramList" style="background-color:brown;">
+      <li>Javascript</li>
+    </ul>
+  </body>
+
+
+  <script>
+    // *lets create a div and put some innertext and style using JScript
+    const div= document.createElement('div')
+    console.log(div);
+    // design div tag
+    div.className= 'main' 
+    div.id= Math.round(Math.random()*10+1)
+    div.setAttribute('title','generated title')
+    div.style.backgroundColor= 'darkblue'
+    div.style.padding= '30px 4px'
+    div.style.textAlign= 'center'
+    div.innerHTML= 'created'
+    // making visible in page
+    const textNode= document.createTextNode('-Text Node')
+    div.appendChild(textNode)
+    document.body.appendChild(div)
+
+    // *Lets add mor list items using function................
+    function AddListItem(item) {
+      // const list= document.createElement('li')
+      // list.innerHTML= item
+      // document.querySelector('.ProgramList').appendChild(list)
+      // -------Optimized way------------------------------------
+      const list= document.createElement('li');
+      list.appendChild(document.createTextNode(item))
+      document.querySelector('.ProgramList').appendChild(list)
+    }
+    AddListItem('GoLang')
+    AddListItem('Python')
+
+    // *EDIT----uncomment one of below to see effect-------------
+    function editListValue(value) {
+      // Approach 1:
+      // const list= (document.querySelector('li:nth-child(1)').innerHTML= value);
+
+      // Approach 2:
+      // const list= document.querySelector('li:nth-child(2)')
+      // const NewList= document.createElement('li')
+      // NewList.textContent= value
+      // list.replaceWith(NewList)
+
+      // Approach 3:
+      const list= document.querySelector('li:nth-child(3)')
+      list.outerHTML= `<li>${value}</li>`
+    }
+    editListValue('C++')
+
+    // *REMOVE---------------------------------------------------
+    const removeItem= document.querySelector('li:first-child')
+    // removeItem.remove()
+    
+    // *Windows inner height------------------------(try 'innerWidth' and 'outerHeight' also)
+    let inHeight = window.innerHeight; 
+    // console.log(" Inner height: " + inHeight); 
+    //Returns Inner height: 402 
+
+    // *LocalStorage---------------------(try sessionStorage also which is valid for the certain session)
+    localStorage.setItem('username','Bob'); 
+    // console.log("Item stored in localStorage is" + localStorage.getItem('username')); 
+    //Returns Item stored in localStorage is Bob 
+
+
+
+  </script>
+</html>
