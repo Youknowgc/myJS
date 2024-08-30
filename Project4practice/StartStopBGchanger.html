@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StartStopBG</title>
+</head>
+<body >
+    <h1>BG changer</h1>
+    <button id="start">start</button><br>
+    <button id="stop">stop</button>
+</body>
+
+<script>
+    let start= document.getElementById('start')
+    let stopp= document.getElementById('stop')
+    let intervalID;
+    
+    let randomColor=
+    function () {
+        let r=(Math.floor(Math.random()*100));
+        let g=(Math.floor(Math.random()*100));
+        let b=(Math.floor(Math.random()*100));
+        // console.log(startInterval);
+        document.querySelector('body').style.backgroundColor= `rgb(${r} ${g} ${b})`
+        document.querySelector('body').style.color= `white`
+    }
+
+    let startInterval= function(){
+        intervalID= setInterval(randomColor,1000)
+    } 
+    start.addEventListener('click', startInterval)
+
+    let clear= function (){
+        clearInterval(intervalID)
+        intervalID= null
+        console.log(intervalID);
+    }
+    stopp.addEventListener('click', clear)
+</script>
+</html>
