@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Storage API project</h1>
+    <input placeholder="enter something" type="text" id="input"><br>
+
+    <button id="save">save</button>
+    <button id="remove">remove</button>
+    <button id="show">saved item</button><br>
+
+    <h3 id="display"></h3>
+
+</body>
+<script>
+    // Session Storage: The storage area is avilable for the duration of the page session.
+    // session storage forgets the data when a tab is closed.(only same tab & reload is allowed)
+    // Local Storage:  session persist even when the browser is closed and reopend
+    // setItem(): takes a key and value, stores the pair.
+    // getItem(): takes a key as input and returns the value stored.
+    // removeItem(): takes a key as input and removes the value stored.
+    // clear(): takes no param. and clears all the stored data.
+
+    document.getElementById('save').addEventListener('click',()=>{
+        let data= document.getElementById('input').value
+        // console.log(data);
+        // sessionStorage.setItem('user-input',data)
+        // lets do the above using localStorage()
+        localStorage.setItem('user-input',data)
+
+        
+    })
+    document.getElementById('remove').addEventListener('click',()=>{
+        // sessionStorage.removeItem('user-input')
+        localStorage.removeItem('user-input')
+    })
+    document.getElementById('show').addEventListener('click',()=>{
+        // let data=sessionStorage.getItem('user-input')
+        let data=localStorage.getItem('user-input')
+        if (data=== null) {
+            data= ''
+        }
+        document.getElementById('display').innerHTML= `> ${data}`
+        // console.log(data);
+
+
+        // NOTE: localStorage() will save the data even we change the tab or reopen the browser.
+    })
+</script>
+</html>

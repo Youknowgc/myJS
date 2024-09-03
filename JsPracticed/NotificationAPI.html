@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification API</title>
+</head>
+<body>
+    <h1>notifiaction api</h1>
+    <button id="btn" >Notify me</button>
+</body>
+<script>
+    //  taking button access and assigning an Onclick function
+    document.getElementById('btn').addEventListener('click',()=>notify())
+
+    // making an Onclick function and assging in a variable.
+    let notify= function notification() {
+        // alert('want notification?')
+
+        Notification.requestPermission() //script/API to requst for user's notification access (a promise function)
+        .then((userPermission) => { //So, we accessing using .then
+            console.log(userPermission); //(pending/ granted / denied)
+            // userPermission= null
+            if (userPermission=== "granted") {
+                new Notification('new notifiaction',NotificationContent) //system notification will pop up
+            // new Notification('Title of notification',{content as an object}) : to give system notifications
+            } else {
+                alert('click ALLOW to receive notification ')
+            }
+        }).catch((err) => {
+            console.log('ERROR IS:',err);
+        });
+    }
+
+    // creating an object to pass inside system notification.
+    let NotificationContent={
+        body: 'Thanks for notification access', //message
+        image: './Welcome.jpg', //image
+        icon: './Icon.jpg' //icon
+    }
+
+    // Try below code to get the above workflow, but this time when page loads.
+    // window.onload= notify()
+
+</script>
+</html>

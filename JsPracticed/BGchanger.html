@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BGC</title>
+</head>
+<body style="text-align: center;">
+    <h1>BG changer</h1>
+        
+    <div style=" animation-name: ani; animation-duration: 2s;
+    @keyframes animation: ani from {background-color: black} to {background-color: blue};
+    background-color:black; margin: auto; padding: 3px;">
+        <span style="color: aliceblue; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">choose a color to set theme</span><br>
+        <button id="yellow">yellow</button>
+        <button id="blue">blue</button>
+        <button id="red">red</button>
+        
+    </div>
+    <div style="margin: 10%; padding: auto;">
+        
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus veritatis, hic consectetur eligendi, ab deleniti quidem alias quae iste libero corrupti mollitia error odio ad quas sunt doloremque explicabo accusamus.
+    </div>
+    
+</body>
+<script>
+    const body= document.querySelector('body')
+    const buttons= document.querySelectorAll('button')
+    // const input= document.querySelector('#input')
+    // console.log(input.value);
+
+    buttons.forEach((click)=>{
+        console.log(click);
+        document.addEventListener('click', (e)=>{
+            console.log(e);
+            // buttons.style.backgroundColor= e.target.id
+            body.style.backgroundColor= e.target.id
+    
+            // click.style.backgroundColor= e.target.id;
+            if (e.target.id === click.id) {
+                click.style.backgroundColor= 'lime'
+                
+            }
+            else{
+                click.style.backgroundColor= e.target.id;
+            }
+        })
+    })
+
+    
+</script>
+</html>
