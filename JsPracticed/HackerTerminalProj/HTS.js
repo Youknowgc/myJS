@@ -12,12 +12,12 @@ let hacktextarr= [
     'password files detected',
     'sending all password and personal files to server',
     'cleaning up',
-    'HACK successful'
+    '💀HACK successful ☠️'
 ]
 let main= document.getElementById('main')
 
 async function hackText(text) {
-    let span= document.createElement('span');
+    let span= document.createElement('h3');
     main.append(span)
     span.innerHTML= `</br>${text}`
     if (hacktextarr[5]===text) {
@@ -34,7 +34,7 @@ async function hackText(text) {
 }
 
 function random(){
-    let num= Math.ceil(Math.random()*7000)
+    let num= Math.ceil(Math.random()*5000)
     console.log(num);
     return(num= num<1000?random():num);
 }
