@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Booking Summary</title>
+  <style>
+    div#maincontent {
+      height: 250px;
+      width: 500px;
+      border: 1px solid #cee2fa;
+      text-align: left;
+      color: #08438e;
+      font-family: calibri;
+      font-size: 20;
+      padding: 5px;
+    }
+
+    div#heading {
+      text-decoration: bold;
+      text-align: center;
+      margin-top: 80px;
+      width: 500px;
+      border: 1px solid #cee2fa;
+      text-align: center;
+      color: #08438e;
+      background-color: #cee2fa;
+      font-family: calibri;
+      font-size: 20;
+      padding: 5px;
+    }
+
+    h2 {
+      padding: 0;
+      margin: 0;
+    }
+  </style>
+</head>
+ 
+
+<body>
+  <center>
+    
+    <div id="heading">
+      <h2>BookMyTik</h2>
+      <input type="number" id="seats" placeholder="Enter number of seats" />
+    <button 
+    onclick="
+    newContent.innerHTML = ''
+    ticketCounter(document.getElementById('seats').value)
+    document.getElementById('seats').value = null
+    ">Submit</button>
+    </div>
+    <div id="maincontent"></div>
+  </center>
+</body>
+<script>
+
+  /*Write a JavaScript code to do online booking of theatre tickets and calculate the total price based on the below conditions:
+
+If seats to be booked are not more than 2, the cost per ticket remains $9.
+
+If seats are 6 or more, booking is not allowed.
+
+If seats to be booked are more than 2 but less than 5, based on the number of seats booked, do the following:
+
+Calculate total cost by applying a discount of 5, 7, 9, 11 percent, and so on for customer 1,2,3 till 5.
+
+Try the code with different values for the number of seats.
+
+Write the following custom functions to implement given requirements:
+
+calculateCost(seats): Calculate and display the total cost to be paid by the customer for the tickets they have bought.
+
+calculateDiscount(seats): Calculate discount on the tickets bought by the customer. Implement using arrow functions.*/
+  let ticketPrice = 9
+  const content = document.querySelector('#maincontent')
+  let discount = [5, 7, 9, 11, 13]
+
+  const newContent = document.createElement('div')
+  newContent.style.padding = '4px'
+  newContent.style.marginTop = '8px'
+
+  function ticketCounter(ticket) { 
+    if (ticket == 1) {
+      content.innerHTML = `<span>
+                  Actual cost per ticket:${ticketPrice}$</br>
+                  Ammount payable: ${ticketPrice}$
+                  <span/>`
+    }
+    else if (ticket >= 6 || ticket === undefined || ticket < 1) {
+      content.innerHTML = `<span>
+                  Booking is not allowed !!
+                  or Invalid input
+                  <span/>`
+    }
+    else {
+      content.innerHTML = `<span>
+                Actual cost per ticket:${ticketPrice}$</br>
+                  ${ticket} seats are eligible for fesive discount!!
+                  <a href='' id='pay' type= 'text' style="text-decoration: underline;" >
+                    Apply</a>
+                  <span/>`
+      let finalPrice = 0;
+
+      for (let i = 0; i < ticket; i++) {
+        const span = document.createElement('span')
+        span.innerHTML = `${discount[i]}% discount for ticket ${i + 1}</br>`
+        newContent.appendChild(span)
+        // console.log(span);
+        finalPrice += ticketPrice - (ticketPrice * (discount[i] / 100));
+        // console.log(finalPrice);
+      }
+      // const Ospan= document.createElement('span')
+      // Ospan.innerHTML=`</br>Ammount payable: ${finalPrice}</br>`
+
+      // newContent.appendChild(Ospan)
+
+      content.appendChild(newContent)
+
+      document.getElementById('pay').addEventListener('click', () => (
+        alert(`Ammount payable: ${finalPrice}$`)
+      ))
+    }
+  }
+</script>
+
+</html>
